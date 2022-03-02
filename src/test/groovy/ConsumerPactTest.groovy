@@ -50,7 +50,7 @@ class ConsumerPactTest extends Specification {
             .path("/v2/get")
             .willRespondWith()
             .status(200)
-            .body("Hello from V3")
+            .body("Hello from V2")
             .toPact()
 
         when:
@@ -63,7 +63,7 @@ class ConsumerPactTest extends Specification {
             def resultMono = consumerService.goV2()
 
             StepVerifier.create(resultMono)
-                .expectNext("Hello from V3")
+                .expectNext("Hello from V2")
                 .verifyComplete()
         }
 
