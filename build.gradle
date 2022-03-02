@@ -7,7 +7,7 @@ plugins {
 }
 
 group = 'com.example'
-version = '0.0.2-SNAPSHOT'
+version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
 configurations {
@@ -36,9 +36,14 @@ tasks.named('test') {
 }
 
 pact {
+    broker {
+        pactBrokerUrl = "https://squaretrade.pactflow.io"
+        pactBrokerToken = "YHsHQiENwpB5w4EcYG_p_A"
+    }
     publish {
         pactDirectory = "$buildDir/pacts"
         pactBrokerUrl = "https://squaretrade.pactflow.io"
         pactBrokerToken = "YHsHQiENwpB5w4EcYG_p_A"
+        consumerVersion = System.getenv("GITHUB_SHA")
     }
 }

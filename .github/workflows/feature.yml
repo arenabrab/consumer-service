@@ -31,6 +31,11 @@ jobs:
       with:
         arguments: build test
 
+#    - name: Check if able to deploy
+#      uses: gradle/gradle-build-action@v2
+#      with:
+#        arguments: canIDeploy -Ppacticipant=${rootProject.name} -Platest=true
+
     - name: Publish Pact contract
       uses: gradle/gradle-build-action@v2
       with:
