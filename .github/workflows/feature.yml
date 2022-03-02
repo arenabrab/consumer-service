@@ -32,6 +32,6 @@ jobs:
         arguments: build test
 
     - name: Publish Pact contract
-      uses: gradle/gradle-build-actions@v2
+      uses: gradle/gradle-build-action@v2
       with:
         arguments: pactPublish
