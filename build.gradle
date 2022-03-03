@@ -9,13 +9,6 @@ plugins {
 
 group = 'com.example'
 sourceCompatibility = '17'
-
-scmVersion {
-    repository {
-        customKey = "YHsHQiENwpB5w4EcYG_p_A"
-    }
-}
-
 version = scmVersion.version
 
 configurations {
