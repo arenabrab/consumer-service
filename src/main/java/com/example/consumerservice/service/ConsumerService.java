@@ -28,4 +28,12 @@ public class ConsumerService {
                 .retrieve()
                 .bodyToMono(String.class);
     }
+
+    public Mono<String> goV3() {
+        return webClient
+                .get()
+                .uri("/v3/get")
+                .retrieve()
+                .bodyToMono(String.class);
+    }
 }
