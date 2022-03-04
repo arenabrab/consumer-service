@@ -1,5 +1,6 @@
 package com.example.consumerservice.service;
 
+import com.example.consumerservice.records.Person;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -29,11 +30,11 @@ public class ConsumerService {
                 .bodyToMono(String.class);
     }
 
-    public Mono<String> goV3() {
+    public Mono<Person> goV3() {
         return webClient
                 .get()
                 .uri("/v3/get")
                 .retrieve()
-                .bodyToMono(String.class);
+                .bodyToMono(Person.class);
     }
 }

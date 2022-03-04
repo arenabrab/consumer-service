@@ -31,12 +31,12 @@ jobs:
       with:
         arguments: build test
 
-    - name: Release new version
-      id: release
-      run: |
-        ./gradlew release \
-          -Prelease.customUsername=${{ github.actor }} \
-          -Prelease.customPassword=${{ github.token }}
+#    - name: Release new version
+#      id: release
+#      run: |
+#        ./gradlew release \
+#          -Prelease.customUsername=${{ github.actor }} \
+#          -Prelease.customPassword=${{ github.token }}
 
 #    - name: Check if able to deploy
 #      uses: gradle/gradle-build-action@v2

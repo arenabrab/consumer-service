@@ -9,6 +9,11 @@ plugins {
 
 group = 'com.example'
 sourceCompatibility = '17'
+
+scmVersion {
+    versionCreator 'versionWithBranch'
+}
+
 version = scmVersion.version
 
 configurations {
