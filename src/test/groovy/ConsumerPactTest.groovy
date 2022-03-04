@@ -17,7 +17,7 @@ class ConsumerPactTest extends Specification {
         given:
         def pact = ConsumerPactBuilder.consumer("consumer-service")
             .hasPactWith("producer-service")
-            .uponReceiving("sample request")
+            .uponReceiving("sample request") // needs to be unique or it will be overwritten in pact file
             .method("GET")
             .path("/v1/get")
             .willRespondWith()
@@ -81,7 +81,7 @@ class ConsumerPactTest extends Specification {
 
         def pact = ConsumerPactBuilder.consumer("consumer-service")
             .hasPactWith("producer-service")
-            .uponReceiving("sample request")
+            .uponReceiving("sample request 3")
             .method("GET")
             .path("/v3/get")
             .willRespondWith()
