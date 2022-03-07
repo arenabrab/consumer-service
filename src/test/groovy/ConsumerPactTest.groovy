@@ -76,7 +76,7 @@ class ConsumerPactTest extends Specification {
     def "get person v3"() {
         given:
         def bodyJson = new PactDslJsonBody()
-            .stringType("name", "Andrew")
+            .stringType("name", "Andrew Barbanera")
             .numberType("age", 36)
 
         def pact = ConsumerPactBuilder.consumer("consumer-service")
