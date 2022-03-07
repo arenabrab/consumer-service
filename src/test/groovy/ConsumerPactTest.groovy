@@ -98,7 +98,7 @@ class ConsumerPactTest extends Specification {
             def resultMono = consumerService.goV3()
 
             StepVerifier.create(resultMono)
-                .expectNext(new Person("Andrew", 36))
+                .expectNext(new Person("Andrew Barbanera", 36))
                 .verifyComplete()
         }
         then:
