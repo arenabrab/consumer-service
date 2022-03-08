@@ -13,7 +13,7 @@ sourceCompatibility = '17'
 scmVersion {
     def versionSha = System.getenv("GITHUB_SHA")
     versionSha = versionSha ? "-${versionSha.substring(0, 8)}" : ""
-    snapshotCreator = { version, position -> "-" + position.getBranch() + versionSha}
+    snapshotCreator = { version, position -> "-" + position.getBranch() + versionSha }
     tag {
         prefix = 'consumer-service-'
     }
@@ -32,13 +32,13 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-webflux'
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux:2.6.3'
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
     testImplementation 'au.com.dius.pact:consumer:4.3.5'
     testImplementation 'org.spockframework:spock-spring:2.1-groovy-3.0'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'io.projectreactor:reactor-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.3'
+    testImplementation 'io.projectreactor:reactor-test:3.4.14'
 }
 
 tasks.named('test') {
