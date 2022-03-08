@@ -25,10 +25,15 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Gradle test release
+      - name: Gradle test
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: test release
+          arguments: test
+
+      - name: Gradle release
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: release
 
       - name: Gradle Publish pact
         uses: gradle/gradle-build-action@v2
