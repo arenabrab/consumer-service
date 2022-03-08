@@ -11,6 +11,7 @@ group = 'com.example'
 sourceCompatibility = '17'
 
 scmVersion {
+    versionIncrementer 'incrementPatch'
     versionCreator 'versionWithBranch'
     tag {
         prefix = 'consumer-service-'
@@ -51,10 +52,12 @@ pact {
     }
 
     publish {
+        def versionSha = System.getenv("GITHUB_SHA")
+        versionSha = versionSha ? versionSha.substring(0, 8) : ""
         pactDirectory = "$buildDir/pacts"
         pactBrokerUrl = "https://squaretrade.pactflow.io"
         pactBrokerToken = "YHsHQiENwpB5w4EcYG_p_A"
-        consumerVersion = version
+        consumerVersion = "$version-$versionSha"
     }
 }
 
