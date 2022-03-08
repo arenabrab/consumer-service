@@ -1,0 +1,17 @@
+name: PR to main
+
+on:
+  pull_request:
+    types: [ closed ]
+    branches: [ main ]
+
+jobs:
+  release:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Release
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: release -Prelease.incrementer=incrementMinor

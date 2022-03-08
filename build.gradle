@@ -2,13 +2,22 @@ plugins {
     id 'org.springframework.boot' version '2.6.4'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id "au.com.dius.pact" version "4.3.5"
+    id 'pl.allegro.tech.build.axion-release' version '1.13.6'
     id 'java'
     id 'groovy'
 }
 
 group = 'com.example'
-version = '0.0.2-SNAPSHOT'
 sourceCompatibility = '17'
+
+scmVersion {
+    versionCreator 'versionWithBranch'
+    tag {
+        prefix = 'consumer-service-'
+    }
+}
+
+version = scmVersion.version
 
 configurations {
     compileOnly {
@@ -36,9 +45,16 @@ tasks.named('test') {
 }
 
 pact {
+    broker {
+        pactBrokerUrl = "https://squaretrade.pactflow.io"
+        pactBrokerToken = "YHsHQiENwpB5w4EcYG_p_A"
+    }
+
     publish {
         pactDirectory = "$buildDir/pacts"
         pactBrokerUrl = "https://squaretrade.pactflow.io"
         pactBrokerToken = "YHsHQiENwpB5w4EcYG_p_A"
+        consumerVersion = version
     }
 }
+
