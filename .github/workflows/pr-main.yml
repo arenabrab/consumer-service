@@ -25,6 +25,11 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Gradle build test cV
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: test cV
+
       - name: Release
         uses: gradle/gradle-build-action@v2
         with:
