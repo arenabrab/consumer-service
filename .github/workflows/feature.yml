@@ -28,39 +28,28 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Build and test with Gradle
+    - name: Gradle - build test cV
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: build test
+        arguments: cV build test
 
-    - name: Get Current Version
+    - name: Publish Pact contract
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: cV
+        arguments: pactPublish -Ppact.provider.branch=$GITHUB_REF_NAME
 
-#    - uses: actions/checkout@v3
-#    - name: Publish using Axion
-#      run: |
-#        # Fetch a full copy of the repo, as required by release plugin:
-#        git fetch --tags --unshallow
-#        # Run release:
-#        ./gradlew release
-
-    - name: Release
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: release -Prelease.incrementer=incrementMinor
-
-    - name: Get Current Version
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: cV
-
-
-#    - name: Publish Pact contract
+#    - name: Release
 #      uses: gradle/gradle-build-action@v2
 #      with:
-#        arguments: pactPublish -Ppact.provider.branch=$GITHUB_REF_NAME
+#        arguments: release -Prelease.incrementer=incrementMinor
+#
+#    - name: Get Current Version
+#      uses: gradle/gradle-build-action@v2
+#      with:
+#        arguments: cV
+
+
+
 
 #    - name: Verify Pacts
 #      uses: gradle/gradle-build-action@v2
