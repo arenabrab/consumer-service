@@ -33,7 +33,7 @@ jobs:
       - name: Release
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: release -Prelease.versionIncrementer=incrementMinor
+          arguments: release #-Prelease.versionIncrementer=incrementMinor
 
       - name: Publish Pact contract
         uses: gradle/gradle-build-action@v2
