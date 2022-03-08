@@ -51,7 +51,7 @@ class ConsumerPactTest extends Specification {
             .stringType("name", "Andrew Barbanera")
             .numberType("age", 36)
             .object("pet")
-                .stringType("name", "rex")
+                .stringType("name", "Bowser")
                 .numberType("legs", 4)
                 .stringType("type", "DOG")
                 .numberType("eyes", 2)
@@ -75,7 +75,7 @@ class ConsumerPactTest extends Specification {
             def resultMono = consumerService.goV2()
 
             StepVerifier.create(resultMono)
-                .expectNext(new Person("Andrew Barbanera", 36, new Pet("rex", 4, PetType.DOG, 2)))
+                .expectNext(new Person("Andrew Barbanera", 36, new Pet("Bowser", 4, PetType.DOG, 2)))
                 .verifyComplete()
         }
         then:
