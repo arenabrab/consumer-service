@@ -13,7 +13,7 @@ sourceCompatibility = '17'
 scmVersion {
     versionCreator 'versionWithBranch'
     tag {
-        prefix = 'consumer'
+        prefix = 'consumer-service-'
     }
 }
 
