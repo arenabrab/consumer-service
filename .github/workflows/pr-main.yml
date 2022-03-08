@@ -25,17 +25,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Gradle build test cV
+      - name: Gradle test, release, publish pact
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: test cV
-
-      - name: Release
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: release #-Prelease.versionIncrementer=incrementMinor
-
-      - name: Publish Pact contract
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: pactPublish -Ppact.provider.branch=$GITHUB_REF_NAME
+          arguments: test release pactPublish

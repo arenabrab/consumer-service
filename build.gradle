@@ -14,8 +14,6 @@ scmVersion {
     def versionSha = System.getenv("GITHUB_SHA")
     versionSha = versionSha ? "-${versionSha.substring(0, 8)}" : ""
     snapshotCreator = { version, position -> "-" + position.getBranch() + versionSha}
-//    versionIncrementer 'incrementPatch'
-//    versionCreator 'versionWithBranch'
     tag {
         prefix = 'consumer-service-'
     }
