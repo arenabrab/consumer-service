@@ -19,6 +19,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
 
     - name: Set up JDK 17
       uses: actions/setup-java@v2
@@ -35,6 +37,14 @@ jobs:
       uses: gradle/gradle-build-action@v2
       with:
         arguments: cV
+
+#    - uses: actions/checkout@v3
+#    - name: Publish using Axion
+#      run: |
+#        # Fetch a full copy of the repo, as required by release plugin:
+#        git fetch --tags --unshallow
+#        # Run release:
+#        ./gradlew release
 
     - name: Release
       uses: gradle/gradle-build-action@v2
