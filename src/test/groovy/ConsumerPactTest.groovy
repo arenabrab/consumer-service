@@ -45,37 +45,7 @@ class ConsumerPactTest extends Specification {
         result instanceof PactVerificationResult.Ok
     }
 
-    def "get hello v2 string"() {
-        given:
-        def pact = ConsumerPactBuilder.consumer("consumer-service")
-            .hasPactWith("producer-service")
-            .uponReceiving("sample request 2")
-            .method("GET")
-            .path("/v2/get")
-            .willRespondWith()
-            .status(200)
-            .body("Hello from V2")
-            .toPact()
-
-        when:
-        def result = ConsumerPactRunnerKt.runConsumerTest(
-            pact, MockProviderConfig.createDefault()) {mockServer, context ->
-
-            def webClient = WebClient.create(mockServer.getUrl())
-            def consumerService = new ConsumerService(webClient)
-
-            def resultMono = consumerService.goV2()
-
-            StepVerifier.create(resultMono)
-                .expectNext("Hello from V2")
-                .verifyComplete()
-        }
-
-        then:
-        result instanceof PactVerificationResult.Ok
-    }
-
-    def "get person v3"() {
+    def "get person v2"() {
         given:
         def bodyJson = new PactDslJsonBody()
             .stringType("name", "Andrew Barbanera")
@@ -84,13 +54,13 @@ class ConsumerPactTest extends Specification {
                 .stringType("name", "rex")
                 .numberType("legs", 4)
                 .stringType("type", "DOG")
-                .numberType("numOfEyes", 2)
+                .numberType("eyes", 2)
 
         def pact = ConsumerPactBuilder.consumer("consumer-service")
             .hasPactWith("producer-service")
-            .uponReceiving("sample request 3")
+            .uponReceiving("sample request 2")
             .method("GET")
-            .path("/v3/get")
+            .path("/v2/get")
             .willRespondWith()
             .status(200)
             .body(bodyJson)
@@ -102,7 +72,7 @@ class ConsumerPactTest extends Specification {
 
             def webClient = WebClient.create(mockServer.getUrl())
             def consumerService = new ConsumerService(webClient)
-            def resultMono = consumerService.goV3()
+            def resultMono = consumerService.goV2()
 
             StepVerifier.create(resultMono)
                 .expectNext(new Person("Andrew Barbanera", 36, new Pet("rex", 4, PetType.DOG, 2)))

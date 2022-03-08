@@ -22,18 +22,10 @@ public class ConsumerService {
                 .bodyToMono(String.class);
     }
 
-    public Mono<String> goV2() {
+    public Mono<Person> goV2() {
         return webClient
                 .get()
                 .uri("/v2/get")
-                .retrieve()
-                .bodyToMono(String.class);
-    }
-
-    public Mono<Person> goV3() {
-        return webClient
-                .get()
-                .uri("/v3/get")
                 .retrieve()
                 .bodyToMono(Person.class);
     }

@@ -38,11 +38,6 @@ jobs:
       with:
         arguments: pactPublish -Ppact.provider.branch=$GITHUB_REF_NAME
 
-#    - name: Release
-#      uses: gradle/gradle-build-action@v2
-#      with:
-#        arguments: release -Prelease.incrementer=incrementMinor
-#
 #    - name: Get Current Version
 #      uses: gradle/gradle-build-action@v2
 #      with:
