@@ -12,6 +12,9 @@ sourceCompatibility = '17'
 
 scmVersion {
     versionCreator 'versionWithBranch'
+    tag {
+        prefix = 'consumer'
+    }
 }
 
 version = scmVersion.version

@@ -49,12 +49,23 @@ jobs:
       with:
         arguments: cV
 
-    - name: Publish Pact contract
+    - name: Release
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: pactPublish -Ppact.provider.branch=$GITHUB_REF_NAME
+        arguments: release
 
-    - name: Verify Pacts
+    - name: Get Current Version
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: pactVerify
+        arguments: cV
+
+
+#    - name: Publish Pact contract
+#      uses: gradle/gradle-build-action@v2
+#      with:
+#        arguments: pactPublish -Ppact.provider.branch=$GITHUB_REF_NAME
+
+#    - name: Verify Pacts
+#      uses: gradle/gradle-build-action@v2
+#      with:
+#        arguments: pactVerify
