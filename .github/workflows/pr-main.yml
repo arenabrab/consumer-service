@@ -1,3 +1,6 @@
+#
+# Grabs the latest tags, increments and creates a release tag, then publishes release version to Pact broker
+#
 name: PR to main
 
 on:
@@ -25,4 +28,9 @@ jobs:
       - name: Release
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: release -Prelease.incrementer=incrementMinor
+          arguments: release -Prelease.versionIncrementer=incrementMinor
+
+      - name: Publish Pact contract
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: pactPublish -Ppact.provider.branch=$GITHUB_REF_NAME

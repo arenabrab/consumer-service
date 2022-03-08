@@ -31,18 +31,13 @@ jobs:
     - name: Gradle - build test cV
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: cV build test
+        arguments: build test
 
     - name: Publish Pact contract
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: pactPublish -Ppact.provider.branch=$GITHUB_REF_NAME
+        arguments: pactPublish #-Ppact.provider.branch=$GITHUB_REF_NAME
 
-#    - name: Release
-#      uses: gradle/gradle-build-action@v2
-#      with:
-#        arguments: release -Prelease.incrementer=incrementMinor
-#
 #    - name: Get Current Version
 #      uses: gradle/gradle-build-action@v2
 #      with:
