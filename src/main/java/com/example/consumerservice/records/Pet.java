@@ -1,4 +1,6 @@
 package com.example.consumerservice.records;
 
-public record Pet(String name, String type, int legs) {
+import com.example.consumerservice.utils.PetType;
+
+public record Pet(String name, int legs, PetType type) {
 }
