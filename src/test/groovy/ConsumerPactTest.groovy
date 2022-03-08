@@ -6,7 +6,9 @@ import au.com.dius.pact.consumer.PactVerificationResult
 import au.com.dius.pact.consumer.dsl.PactDslJsonBody
 import au.com.dius.pact.consumer.model.MockProviderConfig
 import com.example.consumerservice.records.Person
+import com.example.consumerservice.records.Pet
 import com.example.consumerservice.service.ConsumerService
+import com.example.consumerservice.utils.PetType
 import org.springframework.web.reactive.function.client.WebClient
 import reactor.test.StepVerifier
 import spock.lang.Specification
@@ -78,6 +80,11 @@ class ConsumerPactTest extends Specification {
         def bodyJson = new PactDslJsonBody()
             .stringType("name", "Andrew Barbanera")
             .numberType("age", 36)
+            .object("pet")
+                .stringType("name", "rex")
+                .numberType("legs", 4)
+                .stringType("type", "DOG")
+                .numberType("numOfEyes", 2)
 
         def pact = ConsumerPactBuilder.consumer("consumer-service")
             .hasPactWith("producer-service")
@@ -98,7 +105,7 @@ class ConsumerPactTest extends Specification {
             def resultMono = consumerService.goV3()
 
             StepVerifier.create(resultMono)
-                .expectNext(new Person("Andrew Barbanera", 36))
+                .expectNext(new Person("Andrew Barbanera", 36, new Pet("rex", 4, PetType.DOG, 2)))
                 .verifyComplete()
         }
         then:

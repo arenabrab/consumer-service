@@ -31,7 +31,7 @@ jobs:
     - name: Gradle - build test cV
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: cV build test
+        arguments: build test
 
     - name: Publish Pact contract
       uses: gradle/gradle-build-action@v2
