@@ -36,15 +36,15 @@ jobs:
       with:
         arguments: cV
 
-#    - name: Release
-#      uses: gradle/gradle-build-action@v2
-#      with:
-#        arguments: release -Prelease.incrementer=incrementMinor
-#
-#    - name: Get Current Version
-#      uses: gradle/gradle-build-action@v2
-#      with:
-#        arguments: cV
+    - name: Release
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: release -Prelease.incrementer=incrementMinor
+
+    - name: Get Current Version
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: cV
 
 
 #    - name: Publish Pact contract
