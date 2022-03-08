@@ -75,11 +75,7 @@ class ConsumerPactTest extends Specification {
             def resultMono = consumerService.goV2()
 
             StepVerifier.create(resultMono)
-<<<<<<< HEAD
                 .expectNext(new Person("Andrew Barbanera", 37, new Pet("Bowser", 4, PetType.DOG, 2)))
-=======
-                .expectNext(new Person("Andrew Barbanera", 36, new Pet("Bowser", 4, PetType.DOG, 2)))
->>>>>>> f01bd8ac89882632490fa6759e47d0582b55ce02
                 .verifyComplete()
         }
         then:
