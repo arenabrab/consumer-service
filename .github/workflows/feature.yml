@@ -31,4 +31,4 @@ jobs:
       env:
         BRANCH_NAME: "$GITHUB_REF_NAME"
       with:
-        arguments: pactPublish -Ppact.publish.consumer.branchName=Andrew
+        arguments: pactPublish
