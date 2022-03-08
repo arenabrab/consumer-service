@@ -43,10 +43,10 @@ jobs:
 #      with:
 #        arguments: canIDeploy -Ppacticipant=${rootProject.name} -Platest=true
 
-    - name: Tag next version
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: markNextVersion
+#    - name: Tag next version
+#      uses: gradle/gradle-build-action@v2
+#      with:
+#        arguments: markNextVersion
 
     - name: Publish Pact contract
       uses: gradle/gradle-build-action@v2
