@@ -31,3 +31,5 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: develop
+    steps:
+      - name: Deploy
