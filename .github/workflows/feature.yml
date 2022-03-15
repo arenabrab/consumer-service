@@ -6,9 +6,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -30,3 +28,6 @@ jobs:
       uses: gradle/gradle-build-action@v2
       with:
         arguments: pactPublish
+  deploy:
+    runs-on: ubuntu-latest
+    environment: develop
