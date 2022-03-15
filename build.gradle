@@ -12,7 +12,7 @@ sourceCompatibility = '17'
 
 scmVersion {
     def versionSha = System.getenv("GITHUB_SHA")
-    versionSha = versionSha ? "-${versionSha.substring(0, 8)}" : ""
+    versionSha = versionSha ? "-${versionSha.substring(0, 7)}" : ""
     snapshotCreator = { version, position -> "-" + position.getBranch() + versionSha }
     tag {
         prefix = 'consumer-service-'

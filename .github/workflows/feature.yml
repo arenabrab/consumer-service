@@ -33,4 +33,4 @@ jobs:
     environment: develop
     steps:
       - name: Deploy
-        run: echo "deploying to Develop Environment"
+        run: echo "Deploying to Develop Environment"
