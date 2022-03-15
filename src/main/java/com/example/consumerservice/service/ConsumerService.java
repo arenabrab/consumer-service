@@ -1,5 +1,6 @@
 package com.example.consumerservice.service;
 
+import com.example.consumerservice.records.Animal;
 import com.example.consumerservice.records.Person;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,5 +29,13 @@ public class ConsumerService {
                 .uri("/v2/get")
                 .retrieve()
                 .bodyToMono(Person.class);
+    }
+
+    public Mono<Animal> goV3() {
+        return webClient
+                .get()
+                .uri("/v3/get")
+                .retrieve()
+                .bodyToMono(Animal.class);
     }
 }
