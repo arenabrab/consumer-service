@@ -28,7 +28,5 @@ jobs:
 
     - name: Publish Pact contract
       uses: gradle/gradle-build-action@v2
-      env:
-        BRANCH_NAME: "$GITHUB_REF_NAME"
       with:
         arguments: pactPublish
